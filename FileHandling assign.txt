@@ -1,0 +1,239 @@
+1)accept 10 characters from a user ( use Scanner).
+store these 10 characters in a file. (FileWriter)
+Now open a file and read all these characters.
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
+public class FileHandling {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		char arr[]=new char[10];
+		for(int i=0;i<arr.length;i++) {
+
+			System.out.println("enter the character "+i);
+			arr[i]=sc.next().charAt(0);
+		}
+		
+		try(FileWriter fw=new FileWriter("D:\\File handling\\abc.txt")){
+			fw.write(arr);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		try(FileReader fr=new FileReader("D:\\File handling\\abc.txt")){
+			arr=new char[(int)new File("D:\\\\File handling\\abc.txt").length()];
+			fr.read(arr);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for(int i=0;i<arr.length;i++) {
+			System.out.print(arr[i]);
+		}
+		
+	}
+
+}
+Ouyput:
+enter the character 0
+q
+enter the character 1
+f
+enter the character 2
+h
+enter the character 3
+e
+enter the character 4
+d
+enter the character 5
+y
+enter the character 6
+u
+enter the character 7
+o
+enter the character 8
+j
+enter the character 9
+v
+qfhedyuojv
+
+2) using RandomAccessFile class create a file.
+accept a message from user and write in a file.
+now read the message which u have stored in a file.
+now again accept a message and write in a file at the end of existing message.
+now read the entire content of file . ( u should be able to read both the messages now)
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
+public class RandoAccessFile {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try(RandomAccessFile f1=new RandomAccessFile("D:\\File handling\\xyz.txt","rw") ){
+			f1.seek(f1.length());
+			System.out.println("Enter the data");
+			byte arr[]=new byte[200];
+			int k=System.in.read(arr);
+			f1.write(arr,0,k);
+			f1.seek(0);
+			byte c[]=new byte[(int)f1.length()];
+			f1.read(c);
+			String s1=new String(c);
+			System.out.println(s1);
+			f1.seek(f1.length());
+			System.out.println("Enter the data again");
+			k=System.in.read(arr);
+			f1.write(arr,0,k);
+			System.out.println("reading all the data");
+			f1.seek(0);
+			f1.read(arr);
+			s1=new String(arr);
+			System.out.println(s1);
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
+Output:
+Enter the data
+Omkar 
+Omkar 
+
+Enter the data again
+Hi how are you
+reading all the data
+Omkar 
+Hi how are you
+
+3) write a file copy program using byte streams.
+( FileOutputStream and FileInputStream )
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class Fos {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		File f1=new File("D:\\File handling\\fos.txt");
+		try(FileOutputStream fos=new FileOutputStream(f1) ){
+			byte arr[]=new byte[100];
+			int k=System.in.read(arr);
+			fos.write(arr,0,k);
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class Fis {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		File f1=new File("D:\\File handling\\fos.txt");
+		File f2=new File("D:\\File handling\\fis.txt");
+		
+		try(FileInputStream fis=new FileInputStream(f1)){
+			byte arr[]=new byte[(int)f1.length()];
+			
+			FileOutputStream fos=new FileOutputStream(f2);
+			int k=fis.read(arr);
+			fos.write(arr,0,k);
+			String s1=new String(arr);
+			System.out.println(s1);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+
+
+4) Write a file copy program using unicode character streams.
+( FileWriter and FileReader )
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class UniCode {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		File f1=new File("D:\\File handling\\mno.txt");
+		File f2=new File("D:\\File handling\\lmn.txt");
+		try(FileWriter r=new FileWriter(f1)){
+			char arr[]= {'o','m','k','a','r','s'};
+			r.write(arr);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+			
+		try(FileReader fr=new FileReader(f1)){
+			char arr1[]=new char[(int)f1.length()];
+			fr.read(arr1);
+			int k=arr1.length;
+			System.out.println(f1.length());
+			for(int i=0;i<arr1.length;i++)
+				System.out.println(arr1[i]);
+			
+			FileWriter fw1=new FileWriter(f2);
+			fw1.write(arr1,0,k);
+
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
+
+
+
+

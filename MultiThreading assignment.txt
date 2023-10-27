@@ -1,0 +1,160 @@
+1) create a multi-threaded application by using  "extends Thread " method.create 2 threads. they should display characters from A to J.
+package Day9;
+import java.util.*;
+
+class MyClass extends Thread{
+	public void run() {
+		for(char i='A';i<='J';i++) {
+			System.out.print(i+" ");
+		}
+	}
+}
+public class Test {
+	public static void main(String[] args) {
+		MyClass m1=new MyClass();
+		MyClass m2=new MyClass();
+		m1.start();
+		m2.start();
+	}
+
+}
+
+Output:
+A B A B C C D D E F E F G H I J G H I J 
+
+2) above program  using "implements Runnable" method.
+
+package Day9;
+import java.util.*;
+
+class MyClass implements Runnable{
+	public void run() {
+		for(char i='A';i<='J';i++) {
+			System.out.print(i+" ");
+		}
+	}
+}
+public class Test {
+	public static void main(String[] args) {
+		MyClass m1=new MyClass();
+		Thread T1=new Thread(m1);
+		Thread T2=new Thread(m1);
+		T1.start();
+		T2.start();
+	}
+
+}
+
+Output:
+A A B C D E B C F D G H E I F G J H I J 
+
+3) create 3 threads in such a way that while one thread is executing, 2 threads cannot interfere. they should display output "Exec  0" to "Exec 5".
+package Day9;
+import java.util.*;
+
+class MyClass implements Runnable{
+	public void run() {
+		synchronized(this){
+			for(int i=1;i<=5;i++) {
+				System.out.println("exec"+i+" ");
+			}
+		}
+
+	}
+}
+public class Test {
+	public static void main(String[] args) {
+		MyClass m1=new MyClass();
+		Thread T1=new Thread(m1);
+		Thread T2=new Thread(m1);
+		Thread T3=new Thread(m1);
+		T1.start();
+		T2.start();
+		T3.start();
+	}
+
+}
+Output:
+exec1 
+exec2 
+exec3 
+exec4 
+exec5 
+exec1 
+exec2 
+exec3 
+exec4 
+exec5 
+exec1 
+exec2 
+exec3 
+exec4 
+exec5 
+
+4)create 2 threads. Write a program which displays number 1 to 10 using class lock. 
+[hint:- use "implements Runnable" and synchronized block]
+package Day9;
+
+class MyClass implements Runnable {
+	static Class<?> cs;
+
+	static void disp() {
+
+		synchronized (cs) {
+			for (int i = 1; i <= 10; i++) {
+				System.out.println(i);
+			}
+		}
+	}
+
+	public void run() {
+
+		disp();
+	}
+
+	public static void main(String[] args) {
+		try {
+			cs = Class.forName("Day9.MyClass");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		MyClass m1 = new MyClass();
+		MyClass m2 = new MyClass();
+		Thread T1 = new Thread(m1);
+		Thread T2 = new Thread(m2);
+		T1.start();
+		T2.start();
+	}
+}
+Output:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+5) create 2 threads
+	one thread will display 1 to 50
+	second thread will display 50 to 1
+both the threads should start simultaneously.
+
+(use implements method)
+
+
