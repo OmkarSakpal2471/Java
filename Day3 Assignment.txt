@@ -1,0 +1,64 @@
+﻿NAME:Omkar Sakpal
+PRN No:230944520053
+
+
+Developer:
+/**
+ * 
+ */
+package devpack;
+
+
+/**
+ * @author Omkar
+ *
+ */
+public class MyClass {
+        private int num;
+
+
+        /**
+         * @return the value of private num
+         */
+        public int getNum() {
+                return num;
+        }
+
+
+        /**
+         * @param num the num to set the private number
+         */
+        public void setNum(int num) {
+                this.num = num;
+        }
+
+
+
+
+        
+}
+
+
+
+
+Client:
+package clientpack;
+
+
+import devpack.MyClass;
+
+
+public class ClientPro {
+
+
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                MyClass m1=new MyClass();
+                m1.setNum(45);
+                System.out.println(m1.getNum());
+
+
+        }
+
+
+}

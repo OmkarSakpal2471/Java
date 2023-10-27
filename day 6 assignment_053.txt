@@ -1,0 +1,709 @@
+﻿NAME:Omkar Sakpal
+PRN No:230944520053
+
+
+
+
+1)
+on developer side:
+
+
+create interface "Shape" with "void draw();" method.
+
+
+now define child classes 
+        Triangle,Rect and Circle
+
+
+create necessary jar file and documentation.
+
+
+
+
+on Client side:
+
+
+define "ShapeDemo" class with main function
+
+
+create an array of "Shape" with 3 elements. store objects of Triangle,Rect and Circle in this array. now traverse the array and invoke "draw()" of each child.
+
+
+Ans)
+package devpack;
+
+
+public interface Shape {
+        void draw();
+}
+
+
+package devpack;
+
+
+public class Circle implements Shape {
+        public void draw() {
+                System.out.println("draw Circle");
+        }
+}
+
+
+package devpack;
+
+
+public class Rectangle implements Shape{
+        public void draw() {
+                System.out.println("draw Rectangle");
+        }
+}
+
+
+package devpack;
+
+
+public class Triangle implements Shape {
+        public void draw() {
+                System.out.println("draw Triangle");
+        }
+}
+
+
+package clientpack;
+
+
+import devpack.Circle;
+import devpack.Rectangle;
+import devpack.Shape;
+import devpack.Triangle;
+
+
+public class ShapeDemo {
+
+
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                Shape s[]=new Shape[3];
+                s[0]=new Circle();
+                s[1]=new Rectangle();
+                s[2]=new Triangle();
+                
+                for(int i=0;i<s.length;i++) {
+                        s[i].draw();
+                }
+        }
+
+
+}
+
+
+
+
+
+
+2)
+public interface MouseHandler
+{
+        void mouseClicked();
+        void mousePressed();
+        void mouseReleased();
+}
+public interface W indowHandler
+{
+        void windowClosing();
+        void windowClosed();
+}
+
+
+public class WindowGUIApp implements MouseHandler,WindowHandler
+{
+}
+public class GUIDemo
+{
+        main()
+        {
+                create the object of WindowGUIApp and invoke all the methods
+        }
+}
+
+
+ans)
+package InheritanceAssignment;
+
+
+public interface MouseHandler {
+        void mouseClicked();
+        void mousePressed();
+        void mouseReleased();
+}
+
+
+package InheritanceAssignment;
+
+
+public interface WindowHandler {
+        void windowClosing();
+        void windowClosed();
+}
+
+
+
+
+package InheritanceAssignment;
+
+
+
+
+public class WindowGUIApp implements MouseHandler,WindowHandler
+{
+        
+        public void mouseClicked() {
+                System.out.println("mouse is clicked");
+                
+        }
+        
+        public void mousePressed() {
+                System.out.println("mouse is pressed");
+        }
+        
+        public void mouseReleased() {
+                System.out.println("mouse is released");
+        }
+        
+
+
+        public void windowClosing() {
+                System.out.println("window is closing");
+        }
+        
+
+
+        public void windowClosed() {
+                System.out.println("window is closed");
+        }
+
+
+
+
+}
+
+
+package InheritanceAssignment;
+public class GUIDemo {
+
+
+
+
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                WindowGUIApp w=new WindowGUIApp();
+                w.mouseClicked();
+                w.mousePressed();
+                w.mouseReleased();
+                w.windowClosing();
+                w.windowClosed();
+                                
+        }
+
+
+}
+
+
+3)on Developer side create the following interface
+        create necessary jar and docs
+
+
+public interface PersistenceMechanism
+{
+        void writeData(String ref);
+        String readData();
+}
+
+
+
+
+create following classes on client side
+
+
+class FileSystem implements PersistenceMechanism
+{
+        public void writeData(String ref)
+        {
+                // how to write data inside FileSystem
+        }
+        public String readData()
+        {
+                // how to read data from FileSystem
+        }
+}
+
+
+class DatabaseSystem implements PersistenceMechanism
+{
+        public void writeData(String ref)
+        {
+                // how to write data inside DatabaseSystem
+        }
+        public String readData()
+        {
+                // how to read data from DatabaseSystem
+        }
+}
+
+
+class BigdataSystem implements PersistenceMechanism
+{
+        public void writeData(String ref)
+        {
+                // how to write data inside BigdataSystem
+        }
+        public String readData()
+        {
+                // how to read data from BigdataSystem
+        }
+}
+
+
+create one more class "Demo" and in its main function create array of "PersistenceMechanism" interface, store all the child class objects , traverse the array and invoke only "BigdataSystem" class "writeData" and "readData" methods.
+
+
+Ans)
+package devpack;
+
+
+public interface PersistenceMechanism {
+        void writeData(String ref);
+        String readData();
+}
+
+
+package clientpack;
+
+
+import devpack.PersistenceMechanism;
+
+
+public class FileSystem implements PersistenceMechanism {
+        private String fstring;
+        public void writeData(String ref) {
+                fstring=ref;
+        }
+        public String readData() {
+                return fstring;
+        }
+}
+
+
+package clientpack;
+
+
+import devpack.PersistenceMechanism;
+
+
+public class DatabaseSystem implements PersistenceMechanism {
+        private String fstring;
+        public void writeData(String ref) {
+                fstring=ref;
+        }
+        public String readData() {
+                return fstring;
+        }
+}
+
+
+package clientpack;
+
+
+import devpack.PersistenceMechanism;
+
+
+public class BigdataSystem implements PersistenceMechanism {
+        private String fstring;
+        public void writeData(String ref) {
+                fstring=ref;
+        }
+        public String readData() {
+                return fstring;
+        }
+}
+
+
+package clientpack;
+
+
+import devpack.PersistenceMechanism;
+
+
+public class Demo {
+
+
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                PersistenceMechanism p[]=new PersistenceMechanism[3];
+                p[0]=new FileSystem();
+                p[1]=new DatabaseSystem();
+                p[2]=new BigdataSystem();
+                
+                for(int i=0;i<p.length;i++) {
+                        if(p[i] instanceof BigdataSystem ) {
+                                p[i].writeData("Big data system");
+                                System.out.println(p[i].readData());
+                        }
+                }
+
+
+        }
+
+
+}
+Output:
+Big data system
+
+
+4)on the developer side create following interface:
+        create necessary jar file and documentation
+
+
+interface Vehicle { 
+      
+    // all are the abstract methods. 
+    void changeGear(int a); 
+    void speedUp(int a); 
+    void applyBrakes(int a); 
+} 
+
+
+
+
+on the client side define following classes:
+
+
+class FourWheeler implements Vehicle
+{
+        public void changeGear(int a)
+        {
+                // how to change gear in FourWheeler
+        }
+        public void speedUp(int a)
+        {
+                // how to speed up FourWheeler
+        }
+        public void applyBrakes(int a)
+        {
+                // how to apply brakes of FourWheeler
+        }
+}
+
+
+
+
+class TwoWheeler implements Vehicle
+{
+        public void changeGear(int a)
+        {
+                // how to change gear in TwoWheeler
+        }
+        public void speedUp(int a)
+        {
+                // how to speed up TwoWheeler
+        }
+        public void applyBrakes(int a)
+        {
+                // how to apply brakes of TwoWheeler
+        }
+}
+
+
+create one more class "Demo" with
+        main and static perform method
+while calling perform pass any implementation of "Vehicle" and invoke the methods polymorphically.
+
+
+ans)
+package devpack;
+
+
+public interface Vehicle {
+    void changeGear(int a); 
+    void speedUp(int a); 
+    void applyBrakes(int a); 
+}
+
+
+package clientpack;
+import devpack.Vehicle;
+public class FourWheeler implements Vehicle {
+        private int gear,speed;
+        private int brake;
+        public void changeGear(int a)
+        {
+                
+                // how to change gear in FourWheeler
+                if(a>0 && a<6) {
+                        gear=a;
+                        System.out.println("Fourwheeler is at gear "+gear);
+                }
+                else {
+                        System.out.println("Invalid gear");
+                }
+        }
+        public void speedUp(int a)
+        {
+                System.out.println("changing speed");
+                if(a>0 && a<230) {
+                        speed=a;
+                        System.out.println("Fourwheeler speed is "+speed);
+                }
+                else {
+                        System.out.println("invalid entry");
+                }
+                // how to speed up FourWheeler
+        }
+        public void applyBrakes(int a)
+        {
+                // how to apply brakes of FourWheeler
+                if(a==1) {
+                        brake=a;
+                        System.out.println("brake is applied");
+                }
+                else if(a==0) {
+                        brake=a;
+                        System.out.println("brake is released");
+                }
+                else {
+                        System.out.println("invalid entry");
+                }
+
+
+        }
+}
+package clientpack;
+
+
+import devpack.Vehicle;
+
+
+public class TwoWheeler implements Vehicle {
+        private int gear,speed;
+        private int brake;
+        public void changeGear(int a)
+        {
+                // how to change gear in TwoWheeler
+                if(a>0 && a<5) {
+                        gear=a;
+                        System.out.println("Twowheeler is at gear "+gear);
+                }
+                else {
+                        System.out.println("Invalid gear");
+                }
+        }
+        public void speedUp(int a)
+        {
+                // how to speed up TwoWheeler
+                System.out.println("Twowheeler changing speed");
+                if(a>0 && a<250) {
+                        speed=a;
+                        System.out.println("Twowheeler speed is "+speed);
+                }
+                else {
+                        System.out.println("invalid entry");
+                }
+        }
+        public void applyBrakes(int a)
+        {
+                // how to apply brakes of TwoWheeler
+                if(a==1) {
+                        brake=a;
+                        System.out.println("Twowheeler brake is applied");
+                }
+                else if(a==0) {
+                        brake=a;
+                        System.out.println("Twowheeler brake is released");
+                }
+                else {
+                        System.out.println("invalid entry");
+                }
+        }
+}
+
+
+package clientpack;
+
+
+import devpack.Vehicle;
+
+
+public class Demo {
+        
+        public static void perform(Vehicle ref,int gear,int speed,int brake) {
+                ref.changeGear(gear--);
+                ref.speedUp(speed-10);
+                ref.applyBrakes(brake--);
+        }
+
+
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                Vehicle arr[]=new Vehicle[2];
+                arr[0]=new FourWheeler();
+                arr[1]=new TwoWheeler();
+                
+                for(int i=0;i<arr.length;i++) {
+                        perform(arr[i],4,220,1);
+                }
+                
+                
+        }
+
+
+}
+
+
+OutPut:
+Fourwheeler is at gear 4
+changing speed
+Fourwheeler speed is 210
+brake is applied
+Twowheeler is at gear 4
+Twowheeler changing speed
+Twowheeler speed is 210
+Twowheeler brake is applied
+
+
+5)create a new project
+        create a package "weaponpack"
+                inside this package
+
+
+        public class Weapon
+        {
+                public void attack()
+                {
+                }
+        }
+        public class Sword extends Weapon
+        {
+                override attack
+        }
+        public class Bomb extends Weapon
+        {
+                override attack
+        }
+        public class Gun extends Weapon
+        {
+                override attack
+                        +
+                public void fillBullets()
+                {
+                        S.o.p("filling bullets");
+                }
+        }
+
+
+        public class Soldier
+        {
+                // define "fight" method in such a way that given any specific weapon, it should be able to attack
+                public void fight(Weapon ref)
+                {
+                        ref.attack();
+                        // make sure you invoke "fillBullets" also along with "attack" and that shouldn't give "ClassCastException"
+                }
+
+
+        }
+        public class WeaponDemo
+        {
+                p.s.v.main()
+                {
+                        //invoke "fight" method of Soldier class
+                        Soldier s1=new Soldier();
+                        s1.fight(new Gun());
+                }
+        }
+
+
+Ans)
+package weaponpack;
+
+
+public class Weapon {
+        public void attack() {
+                
+        }
+}
+
+
+package weaponpack;
+
+
+public class Gun extends Weapon {
+        public void attack() {
+                System.out.println("attacking with Sword");
+        }
+        
+        public void fillBullets() {
+                System.out.println("Reload the gun");
+        }
+}
+
+
+
+
+package weaponpack;
+
+
+public class Bomb extends Weapon {
+        public void attack() {
+                System.out.println("attacking with Bomb");
+        }
+}
+
+
+package weaponpack;
+
+
+public class Sword extends Weapon {
+        public void attack() {
+                System.out.println("attacking with Sword");
+        }
+}
+
+
+package weaponpack;
+
+
+public class Soldier {
+        public void fight(Weapon ref) {
+
+
+                if(ref instanceof Gun ) {
+                        Gun g=(Gun) ref;
+                        g.fillBullets();
+                }
+                ref.attack();
+        }
+}
+
+
+
+
+package weaponpack;
+
+
+public class WeaponDemo {
+
+
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                Soldier s1=new Soldier();
+                s1.fight(new Gun());
+
+
+        }
+
+
+}
+
+
+Output:
+Reload the gun
+attacking with Sword

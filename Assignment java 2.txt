@@ -1,0 +1,146 @@
+﻿NAME:Omkar Sakpal
+PRN No:230944520053
+
+
+Q1)
+
+
+import java.util.Scanner;
+
+
+public class MyClass {
+
+
+        public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+
+
+                System.out.println("Enter no 1: ");
+                int a = sc.nextInt();
+                System.out.println("Enter no 2: ");
+                int b = sc.nextInt();
+
+
+                System.out.println("Addition: " + (a + b));
+        }
+}
+
+
+Q2)
+
+
+import java.util.Scanner;
+
+
+public class MyClass {
+
+
+        public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+
+
+                System.out.println("Enter no 1: ");
+                int a = sc.nextInt();
+                System.out.println("Enter no 2: ");
+                int b = sc.nextInt();
+
+
+                System.out.println("Subtraction: " + (a - b));
+        }
+}
+
+
+3)
+
+
+import java.util.Scanner;
+
+
+public class MyClass {
+
+
+        public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+
+
+                System.out.println("Enter no 1: ");
+                int a = sc.nextInt();
+                System.out.println("Enter no 2: ");
+                int b = sc.nextInt();
+
+
+                System.out.print("Multiplication: " + (a * b));
+        }
+}
+
+
+4)
+import java.util.Scanner;
+
+
+public class MyClass {
+
+
+        public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+
+
+                System.out.println("Enter no 1: ");
+                int a = sc.nextInt();
+                System.out.println("Enter no 2: ");
+                int b = sc.nextInt();
+
+
+                System.out.print("Division: " + (a / b));
+        }
+}
+
+
+5)
+import java.util.Scanner;
+
+
+public class MyClass {
+
+
+        public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+
+
+                System.out.println("Enter no 1: ");
+                int a = sc.nextInt();
+                System.out.println("Enter no 2: ");
+                int b = sc.nextInt();
+
+
+                if (a == b)
+                        System.out.print("equal");
+                else if (a > b)
+                        System.out.println("no 1 is greater");
+                else
+                        System.out.println("no 2 is greater");
+        }
+}
+
+
+6)
+import java.util.Scanner;
+
+
+public class MyClass {
+
+
+        public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+
+
+                System.out.println("Enter a no: ");
+                int n = sc.nextInt();
+
+
+                if (n % 3 == 0)
+                        System.out.println(n + " is divisible by 3");
+                else
+                        System.out.println(n + " is not divisible by 3");
+        }
+}

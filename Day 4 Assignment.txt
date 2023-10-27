@@ -1,0 +1,81 @@
+﻿NAME:Omkar Sakpal
+PRN No:230944520053
+
+
+
+
+package pack1;
+
+
+public class Base {
+        private void fun1() {
+                System.out.println("In base fun1");
+        }
+        
+        void fun2() {
+                System.out.println("In base fun2");
+        }
+        
+        protected void fun3() {
+                System.out.println("In base fun3");
+        }
+        
+        public void fun4() {
+                System.out.println("In base fun4");
+        }
+        
+        
+}
+
+
+
+
+
+
+package pack1;
+
+
+public class Sub1 extends Base {
+        public void diap1() {
+//                fun1(); // no
+                fun2(); // yes
+                fun3(); // yes
+                fun4(); // yes
+        }
+}
+
+
+
+
+package pack2;
+
+
+import pack1.Base;
+
+
+public class OtherClass {
+        public void disp3() {
+//                fun1();
+//                fun2();
+//                fun3();
+                Base b=new Base();
+                b.fun4();
+                
+        }
+}
+
+
+package pack2;
+
+
+import pack1.Base;
+
+
+public class Sub2 extends Base {
+                public void disp() {
+//                        fun1();
+//                        fun2();
+                        fun3();
+                        fun4();
+                }
+}

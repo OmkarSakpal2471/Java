@@ -1,0 +1,206 @@
+Q1)
+#include<iostream>
+using namespace std;
+class Course {
+public:
+	virtual void fees() {
+		cout << "Course Fees are 100000" << endl;
+	}
+};
+
+class DacCourse:public Course {
+	void fees() {
+		cout << "Dac Course fees us 300000" << endl;
+	}
+};
+
+int main() {
+	Course *c = new Course;
+	c->fees();
+	c = new DacCourse;
+	c->fees();
+
+
+}
+
+
+Q2)
+#include<iostream>
+using namespace std;
+class FourWheeler {
+public:
+	virtual void start() {
+		cout << "In Four Wheeler" << endl;
+	}
+};
+
+class Qualis:public FourWheeler {
+	void start() {
+		cout << "Qualis start" << endl;
+	}
+};
+class Sumo :public FourWheeler {
+	void start() {
+		cout << "Sumo start" << endl;
+	}
+};
+
+class Volvo :public FourWheeler {
+	void start() {
+		cout << "Volvo Start" << endl;
+	}
+};
+
+
+
+int main() {
+	FourWheeler* arr[3];
+	arr[0] = new Qualis;
+	arr[1] = new Sumo;
+	arr[2] = new Volvo;
+
+	for (int i = 0; i < 3; i++) {
+		arr[i]->start();
+	}
+	
+
+}
+
+Q3)
+#include<iostream>
+using namespace std;
+
+
+
+class Subject {
+public:
+	virtual void maxmarks() = 0;
+};
+
+class Maths :public Subject {
+public:
+	void maxmarks() {
+		cout << "Maths max marks" << endl;
+	}
+};
+
+class History :public Subject {
+public:
+	void maxmarks() {
+		cout << "History max marks" << endl;
+	}
+};
+
+class English :public Subject {
+public:
+	void maxmarks() {
+		cout << "English max marks" << endl;
+	}
+};
+
+void show(Subject* s) {
+	s->maxmarks();
+}
+
+int main()
+{
+	show(new History);
+	show(new Maths);
+	show(new English);
+}
+
+Q4)
+#include<iostream>
+using namespace std;
+
+
+
+class Subject {
+public:
+	virtual void maxmarks() = 0;
+};
+
+class Maths :public Subject {
+public:
+	void maxmarks() {
+		cout << "Maths max marks" << endl;
+	}
+};
+
+class History :public Subject {
+public:
+	void maxmarks() {
+		cout << "History max marks" << endl;
+	}
+};
+
+class English :public Subject {
+public:
+	void maxmarks() {
+		cout << "English max marks" << endl;
+	}
+};
+
+void show(Subject &ref) {
+	ref.maxmarks();
+}
+
+int main()
+{
+	History H;
+	show(H);
+	Maths M;
+	show(M);
+	English E;
+	show(E);
+
+}
+
+Q5)
+#include<iostream>
+using namespace std;
+
+
+
+class Shape {
+public:
+	void display() {
+		cout << "Display on canvas" << endl;
+	}
+
+	virtual void draw() = 0;
+};
+
+class Circle:public Shape {
+	void draw() {
+		cout << "Drawing Circle" << endl;
+	}
+};
+
+class Triangle :public Shape {
+	void draw() {
+		cout << "Drawing Triangle" << endl;
+	}
+};
+
+class Rectangle :public Shape {
+	void draw() {
+		cout << "Drawing Rectangle" << endl;
+	}
+};
+
+
+
+int main()
+{
+	Shape* ptr[3] = { new Circle,new Triangle,new Rectangle };
+	for (int i = 0; i < 3; i++) {
+
+		ptr[i]->draw();
+		ptr[i]->display();
+	}
+
+}
+
+
+

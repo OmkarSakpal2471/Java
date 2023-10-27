@@ -1,0 +1,548 @@
+﻿NAME:Omkar Sakpal
+PRN No:230944520053
+
+
+1)Define 2 classes “First” and “Second” with member variables , member functions and constructors of  your choice. Now define a class “Two” in which define main function . In main function create various instances of First and Second  and call their individual member functions.
+
+
+package InheritanceAssignment;
+
+
+
+
+class First {
+        private int num;
+        First(int i){
+                num=i;
+        }
+        void setNum(int num) {
+                this.num=num;
+        }
+        int getNum() {
+                return num;
+        }
+}
+
+
+class Second {
+        private int num;
+        Second(int i){
+                num=i;
+        }
+        void setNum(int num) {
+                this.num=num;
+        }
+        int getNum() {
+                return num;
+        }
+}
+public class Two {
+
+
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                First f1=new First(5);
+                f1.setNum(90);
+                System.out.println(f1.getNum());
+                
+                Second s1=new Second(8);
+                s1.setNum(99);
+                System.out.println(s1.getNum());
+                
+                
+
+
+        }
+
+
+}
+
+
+
+
+2)Create a class with static and non-static member variables. Define static and non-static member functions. Create instance of this class and call both static and non-static member functions.
+
+
+package InheritanceAssignment;
+
+
+
+
+class First {
+        private int num;
+        private static int count;
+        
+        First(int num){
+                this.num=num;
+        }
+
+
+        public int getNum() {
+                return num;
+        }
+
+
+        public void setNum(int num) {
+                this.num = num;
+        }
+
+
+
+
+        public static int getCount() {
+                return count;
+        }
+
+
+        public static void setCount(int count) {
+                First.count = count;
+        }
+        
+        
+}
+
+
+
+
+public class Two {
+
+
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                First f1=new First(5);
+                f1.setNum(56);
+                System.out.println(f1.getNum());
+                First.setCount(1);
+                First.getCount();                
+                
+                
+
+
+        }
+
+
+}
+
+
+3)Define a class “Check” in which declare member variables using  different accessibility modifiers i.e.  <default>, private ,public and protected.   Define a function “disp”  which should be public.  Define a class “CheckDemo” in which you will write “main()” function. Create an instance of  the class “Check” and  show how many  variables can be accessed directly and how many indirectly.
+
+
+package InheritanceAssignment;
+
+
+
+
+class Check{
+        private int a=5;
+        int b=45;
+        protected int e=90;
+        public int d=87;
+        public void disp(int a) {
+                System.out.println("the number is disp is "+a);;
+        }
+        public int getA() {
+                return a;
+        }
+}
+
+
+
+
+public class CheckDemo {
+
+
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                Check c=new Check();
+                
+//                c.disp(c.a);//error because it is private for that we need gettr
+                c.disp(c.b);
+                c.disp(c.e);
+                c.disp(c.d);
+                
+                
+
+
+                
+                
+                
+
+
+        }
+
+
+}
+
+
+4)Show the example of single level inheritance with constructor invocation.
+
+
+package InheritanceAssignment;
+
+
+
+
+class Parent{
+        Parent(){
+                System.out.println("In Parents Constructor");
+        }
+}
+
+
+class Child extends Parent {
+        Child(){
+                System.out.println("In Child Constrictor");
+        }
+}
+
+
+public class CheckDemo {
+
+
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                Child c1=new Child();
+
+
+        }
+
+
+}
+
+
+5)Show the example of multi-level inheritance with constructor invocation.
+
+
+package InheritanceAssignment;
+class GrandParent {
+        GrandParent(){
+                System.out.println("In GrandParent Constructor");
+        }
+}
+
+
+class Parent extends GrandParent {
+        Parent(){
+                System.out.println("In Parents Constructor");
+        }
+}
+
+
+class Child extends Parent {
+        Child(){
+                System.out.println("In Child Constrictor");
+        }
+}
+
+
+
+
+
+
+public class CheckDemo {
+
+
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                Child c1=new Child();
+
+
+        }
+
+
+}
+
+
+6)Show the example of hierarchical inheritance with constructor invocation.
+
+
+package InheritanceAssignment;
+
+
+
+
+class Parent{
+        Parent(){
+                System.out.println("In Parents Constructor");
+        }
+}
+
+
+
+
+
+
+class Child1 extends Parent {
+        Child1(){
+                System.out.println("In Child1 Constrictor");
+        }
+}
+class Child2 extends Parent {
+        Child2(){
+                System.out.println("In Child2 Constrictor");
+        }
+}
+
+
+
+
+
+
+
+
+public class CheckDemo {
+
+
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                Child1 c1=new Child1();
+                Child2 c2=new Child2();        
+
+
+        }
+
+
+}
+
+
+7)Define a parent and a child class . Now explain function overriding with Example.
+
+
+package InheritanceAssignment;
+
+
+
+
+class Shape{
+        void Draw() {
+                System.out.println("Draw the Shape");
+        }
+}
+
+
+class Circle extends Shape{
+        void Draw() {
+                System.out.println("Draw the Circle");
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class CheckDemo {
+
+
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                Circle c1=new Circle();
+                c1.Draw(); //here Draw method of Circle is Overriding and Shape draw method is overridden 
+
+
+
+
+        }
+
+
+}
+
+
+
+
+8)Define a parent class with one function. Define child class with the function having same name as of parent class function, but having different argument.
+Create an instance of child class and call the functions. Make sure u have followed the concept of “function overloading “ in inheritance.
+
+
+package InheritanceAssignment;
+
+
+
+
+class Shape{
+        void Draw() {
+                System.out.println("Draw the Shape");
+        }
+}
+
+
+class Circle extends Shape{
+        void Draw(int i) {
+                System.out.println("Draw the Circle of radius :"+i);
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class CheckDemo {
+
+
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                Circle c1=new Circle();
+                c1.Draw(5); //here the method Draw of class circle is Overloaded
+                c1.Draw();//here the method Draw of Shape will be called
+
+
+        }
+
+
+}
+
+
+9)Define a class “Shape” with “draw()” function . Now derive  classes like “Circle”, “Polygon”,”Rectangle” etc. from “Shape” and override “draw()” function. Define a class “ShapeDemo” in which  write  main()  function. In the main function create a reference to Shape class referring to any of the sub class. Using this reference, call “draw()” and check the result.
+
+
+package InheritanceAssignment;
+
+
+
+
+abstract class Shape{
+        abstract void draw() ;
+                
+
+
+}
+
+
+class Circle extends Shape{
+        void draw() {
+                System.out.println("Draw the Circle");
+        }
+}
+class Polygon extends Shape{
+        void draw() {
+                System.out.println("Draw the Polygon");
+        }
+}
+
+
+class Rectangle extends Shape{
+        void draw() {
+                System.out.println("Draw the Rectangle");
+        }
+}
+
+
+public class ShapeDemo {
+
+
+        public static void perform(Shape ref) {
+                ref.draw();
+        }
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                perform(new Circle());
+                perform(new Polygon());
+                perform(new Rectangle());
+                
+                System.out.println("----------------------------------------------------");
+                System.out.println("Using array");
+                System.out.println("----------------------------------------------------");
+                
+                Shape arr[]=new Shape[3];
+                arr[0]=new Circle();
+                arr[1]=new Polygon();
+                arr[2]=new Rectangle();
+                
+                for(int i=0;i<arr.length;i++) {
+                        arr[i].draw();
+                }
+                
+
+
+        }
+
+
+}
+
+
+10)Define an interface “Vechicle” with “start()” function . Now derive  classes like “TwoWheeler”, “ThreeWheeler”,”FourWheeler” etc. from “Vehicle” and override “start()” function. Define a class “VDemo” in which  write  main()  function. In the main function create a reference to Vehicle  class referring to any of the sub class. Using this reference, call “start" method.
+
+
+package InheritanceAssignment;
+
+
+
+
+interface Vehicle{
+        public void start();
+}
+
+
+class TwoWheeler implements Vehicle{
+        public void start() {
+                System.out.println("Starting the Two Wheeler");
+        }
+}
+
+
+class ThreeWheeler implements Vehicle{
+        public void start() {
+                System.out.println("Starting the Three Wheeler");
+        }
+}
+
+
+class FourWheeler implements Vehicle{
+        public void start() {
+                System.out.println("Starting the Four Wheeler");
+        }
+}
+
+
+public class ShapeDemo {
+
+
+        public static void perform(Vehicle ref) {
+                ref.start(); //Polymorphic invocation
+        }
+        public static void main(String[] args) {
+                // TODO Auto-generated method stub
+                perform(new TwoWheeler());
+                perform(new ThreeWheeler());
+                perform(new FourWheeler());
+                
+                System.out.println("----------------------------------------------------");
+                System.out.println("Using array");
+                System.out.println("----------------------------------------------------");
+                
+                Vehicle arr[]=new Vehicle[3];
+                arr[0]=new TwoWheeler();
+                arr[1]=new ThreeWheeler();
+                arr[2]=new FourWheeler();
+                
+                for(int i=0;i<arr.length;i++) {
+                        arr[i].start(); //Polymorphic invocation
+                }
+                
+
+
+        }
+
+
+}
